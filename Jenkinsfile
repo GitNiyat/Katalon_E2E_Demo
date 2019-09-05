@@ -2,7 +2,6 @@ pipeline {
   agent none
   stages {
     stage('Run tests') {
-    def mvnHome
      parallel {
       stage('Build') { // for display purposes
         steps {
