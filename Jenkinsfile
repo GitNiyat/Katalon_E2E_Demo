@@ -1,9 +1,11 @@
 pipeline {
-  agent none
   stages {
     stage('Run tests') {
      parallel {
       stage('Build') { // for display purposes
+        agent{
+          label "master"
+        }
         steps {
           bat label: '', script: '''C:
           cd "C:\\Users\\dmurugad\\Downloads\\Katalon_Studio_Windows_64-6.3.3"
