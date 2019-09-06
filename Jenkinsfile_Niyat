@@ -1,8 +1,9 @@
 pipeline {
   agent none
   stages {
-    stage('Run tests') {
+    //stage('Run tests') {
      //parallel {
+     try{
       stage('Build') { // for display purposes
         agent{
           label "master"
@@ -12,6 +13,9 @@ pipeline {
           cd "C:\\Users\\dmurugad\\Downloads\\Katalon_Studio_Windows_64-6.3.3"
           katalon -noSplash  -runMode=console -projectPath="C:\\Users\\dmurugad\\Downloads\\POC\\POC\\POC.prj" -retry=0 -testSuitePath="Test Suites/POC_Suite" -executionProfile="default" -browserType="Chrome"'''
         } 
+      }
+      } catch(e) {
+      echo e.toString()
       }
        
       stage('Test') { // for display purposes
@@ -26,5 +30,5 @@ pipeline {
        }
       }
     }
-  }
+  //}
 //}
